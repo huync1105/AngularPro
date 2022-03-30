@@ -1,0 +1,32 @@
+<div class="header">
+  <h3>
+    <ng-content></ng-content>
+  </h3>
+</div>
+<div class="body">
+  <p-table [value]="data">
+    <ng-template pTemplate="colgroup">
+      
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+
+        </th>
+        <th *ngFor="let col of cols">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-item >
+      <tr>
+        <td *ngFor="let col of cols">
+          {{item[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+
+    </ng-template>
+  </p-table>
+</div>
