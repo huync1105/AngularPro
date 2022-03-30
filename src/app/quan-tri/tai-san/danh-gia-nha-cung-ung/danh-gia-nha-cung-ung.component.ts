@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaiSanService } from 'src/app/services/tai-san.service';
 
 interface Person {
   id: string,
@@ -17,45 +18,28 @@ export class DanhGiaNhaCungUngComponent implements OnInit {
 
   title: string = 'Bảng đánh giá nhà cung ứng';
   cols = [
-    {
-      header: 'Mã',
-      field: 'id',
-      element: `<input type="text" pInputText/>`
-    },
+    { header: 'Mã',field: 'id' },
     { header: 'Tên', field: 'name' },
     { header: 'Địa chỉ', field: 'address' },
     { header: 'SĐT', field: 'phone' },
     { header: 'Tuổi', field: 'age' },
   ]
-  data?: Person[]
+  data?: Person[];
 
-  constructor() {
-    this.data = [
-      {
-        id: "P001",
-        name: "Nguyễn Công Huy",
-        address: "Cầu Giấy",
-        phone: "0987654321",
-        age: 23
-      },
-      {
-        id: "P002",
-        name: "Đặng Tuấn Huy",
-        address: "Mỗ Lao",
-        phone: "0987654321",
-        age: 22
-      },
-      {
-        id: "P001",
-        name: "Lê Quốc Đạt",
-        address: "Định Công",
-        phone: "0987654321",
-        age: 29
-      },
-    ];
+  constructor(
+    private taiSanService: TaiSanService,
+  ) {
+
   }
 
   ngOnInit(): void {
+    this.LoadData();
+  }
+
+  LoadData() {
+    this.taiSanService.GetListPerSons().subscribe((res:any)=> {
+      this.data = res;
+    })
   }
 
 }

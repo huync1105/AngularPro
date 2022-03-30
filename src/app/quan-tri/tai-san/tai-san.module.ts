@@ -7,6 +7,7 @@ import { TableComponent } from 'src/app/dynamic-table/table/table.component';
 import {TableModule} from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {InputTextModule} from 'primeng/inputtext';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     TaiSanRoutingModule,
     TableModule,
     FormsModule,
